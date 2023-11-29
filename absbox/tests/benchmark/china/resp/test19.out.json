@@ -1,0 +1,2679 @@
+[
+  {
+    "tag": "MDeal",
+    "contents": {
+      "name": "\u57fa\u4e8e\u5206\u6bb5\u8fdd\u7ea6\u7387\u7684\u4fe1\u7528\u4e8b\u4ef6",
+      "status": {
+        "tag": "Amortizing"
+      },
+      "dates": {
+        "tag": "PreClosingDates",
+        "contents": [
+          "2021-03-01",
+          "2021-05-01",
+          null,
+          "2060-12-01",
+          [
+            "2021-05-01",
+            {
+              "tag": "MonthEnd"
+            }
+          ],
+          [
+            "2021-06-26",
+            {
+              "tag": "DayOfMonth",
+              "contents": 26
+            }
+          ]
+        ]
+      },
+      "accounts": {
+        "\u8d26\u623701": {
+          "accBalance": 0,
+          "accName": "\u8d26\u623701",
+          "accInterest": null,
+          "accType": null,
+          "accStmt": [
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-05-01",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-05-01",
+                0,
+                0,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-05-01",
+                0,
+                0,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-05-01",
+                0,
+                0,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-06-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-06-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-06-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-06-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-07-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-07-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-07-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-07-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-08-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-08-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-08-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-08-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-09-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-09-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-09-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-09-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-10-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-10-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-10-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-10-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-11-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-11-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-11-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-11-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-12-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-12-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-12-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2021-12-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-01-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-01-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-01-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-01-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-28",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-28",
+                0,
+                0,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-28",
+                0,
+                0,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-02-28",
+                0,
+                0,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-26",
+                0,
+                0,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-26",
+                0,
+                0,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-26",
+                0,
+                0,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-31",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-31",
+                0.96,
+                0.96,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-31",
+                12.85,
+                11.89,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-03-31",
+                13.64,
+                0.79,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-26",
+                6.57,
+                -7.07,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-26",
+                3.35,
+                -3.22,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-26",
+                0,
+                -3.35,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-30",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-30",
+                0.95,
+                0.95,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-30",
+                12.73,
+                11.78,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-04-30",
+                13.43,
+                0.7,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-26",
+                12.88,
+                -0.55,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-26",
+                12.62,
+                -0.26,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-26",
+                0,
+                -12.62,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-31",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-31",
+                0.81,
+                0.81,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-31",
+                12.48,
+                11.67,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-05-31",
+                13.1,
+                0.62,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-26",
+                12.61,
+                -0.49,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-26",
+                12.34,
+                -0.27,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-26",
+                0,
+                -12.34,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-30",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-30",
+                0.72,
+                0.72,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-30",
+                12.27,
+                11.55,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-06-30",
+                12.8,
+                0.53,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-26",
+                12.39,
+                -0.41,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-26",
+                12.13,
+                -0.26,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-26",
+                0,
+                -12.13,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-31",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-31",
+                0.59,
+                0.59,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-31",
+                12.04,
+                11.45,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-07-31",
+                12.49,
+                0.45,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-26",
+                12.14,
+                -0.35,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-26",
+                11.87,
+                -0.27,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-26",
+                0,
+                -11.87,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-31",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-31",
+                0.5,
+                0.5,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-31",
+                11.84,
+                11.34,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-08-31",
+                12.21,
+                0.37,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-26",
+                11.93,
+                -0.28,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-26",
+                11.66,
+                -0.27,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-26",
+                0,
+                -11.66,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-30",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-30",
+                0.4,
+                0.4,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-30",
+                11.64,
+                11.24,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-09-30",
+                11.93,
+                0.29,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-26",
+                11.73,
+                -0.2,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-26",
+                11.47,
+                -0.26,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-26",
+                0,
+                -11.47,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-31",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-31",
+                0.29,
+                0.29,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-31",
+                11.42,
+                11.13,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-10-31",
+                11.64,
+                0.22,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-26",
+                11.5,
+                -0.14,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-26",
+                11.23,
+                -0.27,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-26",
+                0,
+                -11.23,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-30",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-30",
+                0.19,
+                0.19,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-30",
+                11.23,
+                11.04,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-11-30",
+                11.37,
+                0.14,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-26",
+                11.3,
+                -0.07,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-26",
+                11.04,
+                -0.26,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-26",
+                0,
+                -11.04,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-26",
+                0,
+                0,
+                "<PayPrin:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-31",
+                0,
+                0,
+                "<PoolInflow:CollectedRecoveries>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-31",
+                0.09,
+                0.09,
+                "<PoolInflow:CollectedPrepayment>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-31",
+                11.04,
+                10.95,
+                "<PoolInflow:CollectedPrincipal>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2022-12-31",
+                11.11,
+                0.07,
+                "<PoolInflow:CollectedInterest>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2023-01-26",
+                11.1,
+                -0.01,
+                "<PayInt:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2023-01-26",
+                10.83,
+                -0.27,
+                "<PayInt:B>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2023-01-26",
+                8.54,
+                -2.29,
+                "<PayPrin:A1>"
+              ]
+            },
+            {
+              "tag": "AccTxn",
+              "contents": [
+                "2023-01-26",
+                0,
+                -8.54,
+                "<PayPrin:B>"
+              ]
+            }
+          ]
+        }
+      },
+      "fees": {},
+      "bonds": {
+        "A1": {
+          "bndName": "A1",
+          "bndType": {
+            "tag": "Sequential"
+          },
+          "bndOriginInfo": {
+            "originBalance": 100,
+            "originDate": "2020-01-03",
+            "originRate": {
+              "numerator": 7,
+              "denominator": 100
+            },
+            "maturityDate": null
+          },
+          "bndInterestInfo": {
+            "tag": "Fix",
+            "contents": [
+              0.08,
+              "DC_ACT_365F"
+            ]
+          },
+          "bndStepUp": null,
+          "bndBalance": 0,
+          "bndRate": 0.07,
+          "bndDuePrin": 0,
+          "bndDueInt": 0,
+          "bndDueIntDate": "2023-01-26",
+          "bndLastIntPay": "2023-01-26",
+          "bndLastPrinPay": null,
+          "bndStmt": [
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-06-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-07-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-08-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-09-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-10-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-11-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-12-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-01-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-02-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-03-26",
+                100,
+                0,
+                0,
+                0.07,
+                0,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-04-26",
+                96.65,
+                7.07,
+                3.35,
+                0.07,
+                10.42,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-05-26",
+                84.03,
+                0.55,
+                12.62,
+                0.07,
+                13.17,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-06-26",
+                71.69,
+                0.49,
+                12.34,
+                0.07,
+                12.83,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-07-26",
+                59.56,
+                0.41,
+                12.13,
+                0.07,
+                12.54,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-08-26",
+                47.69,
+                0.35,
+                11.87,
+                0.07,
+                12.22,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-09-26",
+                36.03,
+                0.28,
+                11.66,
+                0.07,
+                11.94,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-10-26",
+                24.56,
+                0.2,
+                11.47,
+                0.07,
+                11.67,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-11-26",
+                13.33,
+                0.14,
+                11.23,
+                0.07,
+                11.37,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-12-26",
+                2.29,
+                0.07,
+                11.04,
+                0.07,
+                11.11,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2023-01-26",
+                0,
+                0.01,
+                2.29,
+                0.07,
+                2.3,
+                [
+                  "<PayInt:A1>",
+                  "<PayPrin:A1>"
+                ]
+              ]
+            }
+          ]
+        },
+        "B": {
+          "bndName": "B",
+          "bndType": {
+            "tag": "Sequential"
+          },
+          "bndOriginInfo": {
+            "originBalance": 100,
+            "originDate": "2020-01-03",
+            "originRate": {
+              "numerator": 7,
+              "denominator": 100
+            },
+            "maturityDate": null
+          },
+          "bndInterestInfo": {
+            "tag": "Fix",
+            "contents": [
+              0.08,
+              "DC_ACT_365F"
+            ]
+          },
+          "bndStepUp": null,
+          "bndBalance": 31.46,
+          "bndRate": 0.08,
+          "bndDuePrin": 31.46,
+          "bndDueInt": 0,
+          "bndDueIntDate": "2023-01-26",
+          "bndLastIntPay": "2023-01-26",
+          "bndLastPrinPay": null,
+          "bndStmt": [
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-06-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-07-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-08-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-09-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-10-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-11-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2021-12-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-01-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-02-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-03-26",
+                40,
+                0,
+                0,
+                0.08,
+                0,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-04-26",
+                40,
+                3.22,
+                0,
+                0.08,
+                3.22,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-05-26",
+                40,
+                0.26,
+                0,
+                0.08,
+                0.26,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-06-26",
+                40,
+                0.27,
+                0,
+                0.08,
+                0.27,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-07-26",
+                40,
+                0.26,
+                0,
+                0.08,
+                0.26,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-08-26",
+                40,
+                0.27,
+                0,
+                0.08,
+                0.27,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-09-26",
+                40,
+                0.27,
+                0,
+                0.08,
+                0.27,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-10-26",
+                40,
+                0.26,
+                0,
+                0.08,
+                0.26,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-11-26",
+                40,
+                0.27,
+                0,
+                0.08,
+                0.27,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2022-12-26",
+                40,
+                0.26,
+                0,
+                0.08,
+                0.26,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            },
+            {
+              "tag": "BondTxn",
+              "contents": [
+                "2023-01-26",
+                31.46,
+                0.27,
+                8.54,
+                0.08,
+                8.81,
+                [
+                  "<PayInt:B>",
+                  "<PayPrin:B>"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "pool": {
+        "assets": [
+          {
+            "tag": "Mortgage",
+            "contents": [
+              {
+                "tag": "MortgageOriginalInfo",
+                "originBalance": 120,
+                "originRate": {
+                  "tag": "Fix",
+                  "contents": [
+                    "DC_ACT_365F",
+                    0.0485
+                  ]
+                },
+                "originTerm": 30,
+                "period": "Monthly",
+                "startDate": "2020-06-01",
+                "prinType": {
+                  "tag": "Even"
+                },
+                "prepaymentPenalty": null
+              },
+              120,
+              0.08,
+              10,
+              null,
+              {
+                "tag": "Current"
+              }
+            ]
+          }
+        ],
+        "futureCf": [
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2021-03-01",
+              120,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              null,
+              null,
+              null
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-02-28",
+              120,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.08,
+              null,
+              null,
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-03-31",
+              107.06,
+              11.89,
+              0.79,
+              0.96,
+              0.09,
+              0,
+              0.09,
+              0.08,
+              null,
+              null,
+              [
+                11.89,
+                0.96,
+                0,
+                0.09,
+                0,
+                0.09
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-04-30",
+              94.24,
+              11.78,
+              0.7,
+              0.95,
+              0.09,
+              0,
+              0.09,
+              0.08,
+              null,
+              null,
+              [
+                23.67,
+                1.91,
+                0,
+                0.18,
+                0,
+                0.18
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-05-31",
+              81.69,
+              11.67,
+              0.62,
+              0.81,
+              0.07,
+              0,
+              0.07,
+              0.08,
+              null,
+              null,
+              [
+                35.34,
+                2.72,
+                0,
+                0.25,
+                0,
+                0.25
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-06-30",
+              69.36,
+              11.55,
+              0.53,
+              0.72,
+              0.06,
+              0,
+              0.06,
+              0.08,
+              null,
+              null,
+              [
+                46.89,
+                3.44,
+                0,
+                0.31,
+                0,
+                0.31
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-07-31",
+              57.27,
+              11.45,
+              0.45,
+              0.59,
+              0.05,
+              0,
+              0.05,
+              0.08,
+              null,
+              null,
+              [
+                58.34,
+                4.03,
+                0,
+                0.36,
+                0,
+                0.36
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-08-31",
+              45.39,
+              11.34,
+              0.37,
+              0.5,
+              0.04,
+              0,
+              0.04,
+              0.08,
+              null,
+              null,
+              [
+                69.68,
+                4.53,
+                0,
+                0.4,
+                0,
+                0.4
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-09-30",
+              33.72,
+              11.24,
+              0.29,
+              0.4,
+              0.03,
+              0,
+              0.03,
+              0.08,
+              null,
+              null,
+              [
+                80.92,
+                4.93,
+                0,
+                0.43,
+                0,
+                0.43
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-10-31",
+              22.28,
+              11.13,
+              0.22,
+              0.29,
+              0.02,
+              0,
+              0.02,
+              0.08,
+              null,
+              null,
+              [
+                92.05,
+                5.22,
+                0,
+                0.45,
+                0,
+                0.45
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-11-30",
+              11.04,
+              11.04,
+              0.14,
+              0.19,
+              0.01,
+              0,
+              0.01,
+              0.08,
+              null,
+              null,
+              [
+                103.09,
+                5.41,
+                0,
+                0.46,
+                0,
+                0.46
+              ]
+            ]
+          },
+          {
+            "tag": "MortgageFlow",
+            "contents": [
+              "2022-12-31",
+              0,
+              10.95,
+              0.07,
+              0.09,
+              0,
+              0,
+              0,
+              0.08,
+              null,
+              null,
+              [
+                114.04,
+                5.5,
+                0,
+                0.46,
+                0,
+                0.46
+              ]
+            ]
+          }
+        ],
+        "asOfDate": "2021-03-01",
+        "issuanceStat": {
+          "IssuanceBalance": 120
+        },
+        "extendPeriods": {
+          "tag": "MonthEnd"
+        }
+      },
+      "waterfall": {
+        "EndOfPoolCollection": [],
+        "DistributionDay (DealAccelerated Nothing)": [
+          {
+            "tag": "AccrueAndPayInt",
+            "contents": [
+              null,
+              "\u8d26\u623701",
+              [
+                "A1"
+              ],
+              null
+            ]
+          },
+          {
+            "tag": "PayPrinResidual",
+            "contents": [
+              "\u8d26\u623701",
+              [
+                "A1"
+              ]
+            ]
+          }
+        ],
+        "DistributionDay Amortizing": [
+          {
+            "tag": "AccrueAndPayInt",
+            "contents": [
+              null,
+              "\u8d26\u623701",
+              [
+                "A1"
+              ],
+              null
+            ]
+          },
+          {
+            "tag": "AccrueAndPayInt",
+            "contents": [
+              null,
+              "\u8d26\u623701",
+              [
+                "B"
+              ],
+              null
+            ]
+          },
+          {
+            "tag": "PayPrin",
+            "contents": [
+              null,
+              "\u8d26\u623701",
+              [
+                "A1"
+              ],
+              null
+            ]
+          },
+          {
+            "tag": "PayPrin",
+            "contents": [
+              null,
+              "\u8d26\u623701",
+              [
+                "B"
+              ],
+              null
+            ]
+          }
+        ],
+        "CleanUp": []
+      },
+      "collects": [
+        {
+          "tag": "Collect",
+          "contents": [
+            "CollectedInterest",
+            "\u8d26\u623701"
+          ]
+        },
+        {
+          "tag": "Collect",
+          "contents": [
+            "CollectedPrincipal",
+            "\u8d26\u623701"
+          ]
+        },
+        {
+          "tag": "Collect",
+          "contents": [
+            "CollectedPrepayment",
+            "\u8d26\u623701"
+          ]
+        },
+        {
+          "tag": "Collect",
+          "contents": [
+            "CollectedRecoveries",
+            "\u8d26\u623701"
+          ]
+        }
+      ],
+      "call": null,
+      "liqProvider": null,
+      "rateSwap": null,
+      "rateCap": null,
+      "currencySwap": null,
+      "custom": null,
+      "triggers": {
+        "EndCollection": {},
+        "EndCollectionWF": {},
+        "BeginDistributionWF": {
+          "\u8fdd\u7ea6\u7387\u6d4b\u8bd5": {
+            "trgCondition": {
+              "tag": "IfRateCurve",
+              "contents": [
+                "G",
+                {
+                  "tag": "CumulativePoolDefaultedRate"
+                },
+                {
+                  "tag": "ThresholdCurve",
+                  "contents": [
+                    [
+                      "2021-06-30",
+                      {
+                        "numerator": 1,
+                        "denominator": 50
+                      }
+                    ],
+                    [
+                      "2021-08-31",
+                      {
+                        "numerator": 11,
+                        "denominator": 500
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            "trgEffects": {
+              "tag": "DealStatusTo",
+              "contents": {
+                "tag": "DealAccelerated",
+                "contents": null
+              }
+            },
+            "trgStatus": false,
+            "trgCurable": false
+          }
+        },
+        "EndDistributionWF": {}
+      },
+      "overrides": null,
+      "ledgers": null
+    }
+  },
+  [
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2021-03-01",
+        120,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-02-28",
+        120,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.08,
+        null,
+        null,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-03-31",
+        107.06,
+        11.89,
+        0.79,
+        0.96,
+        0.09,
+        0,
+        0.09,
+        0.08,
+        null,
+        null,
+        [
+          11.89,
+          0.96,
+          0,
+          0.09,
+          0,
+          0.09
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-04-30",
+        94.24,
+        11.78,
+        0.7,
+        0.95,
+        0.09,
+        0,
+        0.09,
+        0.08,
+        null,
+        null,
+        [
+          23.67,
+          1.91,
+          0,
+          0.18,
+          0,
+          0.18
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-05-31",
+        81.69,
+        11.67,
+        0.62,
+        0.81,
+        0.07,
+        0,
+        0.07,
+        0.08,
+        null,
+        null,
+        [
+          35.34,
+          2.72,
+          0,
+          0.25,
+          0,
+          0.25
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-06-30",
+        69.36,
+        11.55,
+        0.53,
+        0.72,
+        0.06,
+        0,
+        0.06,
+        0.08,
+        null,
+        null,
+        [
+          46.89,
+          3.44,
+          0,
+          0.31,
+          0,
+          0.31
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-07-31",
+        57.27,
+        11.45,
+        0.45,
+        0.59,
+        0.05,
+        0,
+        0.05,
+        0.08,
+        null,
+        null,
+        [
+          58.34,
+          4.03,
+          0,
+          0.36,
+          0,
+          0.36
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-08-31",
+        45.39,
+        11.34,
+        0.37,
+        0.5,
+        0.04,
+        0,
+        0.04,
+        0.08,
+        null,
+        null,
+        [
+          69.68,
+          4.53,
+          0,
+          0.4,
+          0,
+          0.4
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-09-30",
+        33.72,
+        11.24,
+        0.29,
+        0.4,
+        0.03,
+        0,
+        0.03,
+        0.08,
+        null,
+        null,
+        [
+          80.92,
+          4.93,
+          0,
+          0.43,
+          0,
+          0.43
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-10-31",
+        22.28,
+        11.13,
+        0.22,
+        0.29,
+        0.02,
+        0,
+        0.02,
+        0.08,
+        null,
+        null,
+        [
+          92.05,
+          5.22,
+          0,
+          0.45,
+          0,
+          0.45
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-11-30",
+        11.04,
+        11.04,
+        0.14,
+        0.19,
+        0.01,
+        0,
+        0.01,
+        0.08,
+        null,
+        null,
+        [
+          103.09,
+          5.41,
+          0,
+          0.46,
+          0,
+          0.46
+        ]
+      ]
+    },
+    {
+      "tag": "MortgageFlow",
+      "contents": [
+        "2022-12-31",
+        0,
+        10.95,
+        0.07,
+        0.09,
+        0,
+        0,
+        0,
+        0.08,
+        null,
+        null,
+        [
+          114.04,
+          5.5,
+          0,
+          0.46,
+          0,
+          0.46
+        ]
+      ]
+    }
+  ],
+  [
+    {
+      "tag": "BondOutstandingInt",
+      "contents": [
+        "A1",
+        0,
+        100
+      ]
+    },
+    {
+      "tag": "BondOutstandingInt",
+      "contents": [
+        "B",
+        0,
+        40
+      ]
+    },
+    {
+      "tag": "BondOutstanding",
+      "contents": [
+        "A1",
+        0,
+        100
+      ]
+    },
+    {
+      "tag": "BondOutstanding",
+      "contents": [
+        "B",
+        31.46,
+        40
+      ]
+    },
+    {
+      "tag": "WarningMsg",
+      "contents": "Bond B is not paid off"
+    },
+    {
+      "tag": "DealStatusChangeTo",
+      "contents": [
+        "2021-05-01",
+        {
+          "tag": "PreClosing",
+          "contents": {
+            "tag": "Amortizing"
+          }
+        },
+        {
+          "tag": "Amortizing"
+        }
+      ]
+    }
+  ],
+  null
+]

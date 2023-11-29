@@ -1,0 +1,18 @@
+{
+    "interest": [
+        {
+            "tag": "RateFlat",
+            "contents": [
+                "USCMT1Y",
+                0.04
+            ]
+        },
+        {
+            "tag": "RateFlat",
+            "contents": [
+                "USCMT5Y",
+                0.02
+            ]
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{"tag": "PoolLevel",
+ "contents": [
+        {"tag": "LoanAssump",
+               "contents": [
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        [],
+        {"tag": "DummyDefaultAssump"
+        }
+    ]
+}
