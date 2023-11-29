@@ -20,23 +20,23 @@ def flat(xss) -> list:
     return reduce(lambda xs, ys: xs + ys, xss)
 
 def mkTag(x:tuple) -> dict:
-    match x:
-        case (tagName, tagValue):
-            return {"tag": tagName, "contents": tagValue}
-        case (tagName):
-            return {"tag": tagName}
+    if len(x) == 2:
+        return {"tag": x[0], "contents": x[1]}
+    elif len(x) == 1:
+        return {"tag": x[0]}
+
 
 def readTagStr(x:str) -> str:
     #print("tag",type(x),x)
     _x = json.loads(x.replace("'","\"").replace("True","true").replace("False","false"))
-    match _x:
-        case {"tag":_t,"contents":_c} if isinstance(_c, list):
+    if _x == {"tag":_t,"contents":_c}:
+        if isinstance(_c, list):
             _cs = [str(_) for _ in _c]
             return f"<{_t}:{','.join(_cs)}>"
-        case {"tag": _t }:
-            return f"<{_t}>"
-        case _ :
-            return f"<{_x}>"
+    elif _x == {"tag": _t }:
+        return f"<{_t}>"
+    else:
+        return f"<{_x}>"
 
 def readTag(x:dict):
     return f"<{x['tag']}:{','.join(x['contents'])}>"
@@ -144,20 +144,19 @@ def npv(_flow, **p):
         return xnpv(p['rate']
                     , [init_date] + flow.index.to_list()
                     , [-1 * init_amt] + af.to_list())
-    match (cols, idx_name):
-        case (china_rental_flow, "日期"):
-            return _pv("租金")
-        case (english_rental_flow, "Date"):
-            return _pv("Rental")
-        case (english_mortgage_flow_fields,"Date"):
-            sum_fields_to_field(flow, ["Principal", "Interest", "Prepayment", "Recovery"], "Cash")
-            return _pv("Cash")
-        case (china_bondflow_fields, "日期"):
-            return _pv("本息合计")
-        case (english_bondflow_fields, "Date"):
-            return _pv("cash")
-        case _:
-            raise RuntimeError("Failed to match", cols, idx_name)
+    if (cols, idx_name) == (china_rental_flow, "日期"):
+        return _pv("租金")
+    elif (cols, idex_name) == (english_rental_flow, "Date"):
+        return _pv("Rental")
+    elif (cols, idex_name) == (english_mortgage_flow_fields,"Date"):
+        sum_fields_to_field(flow, ["Principal", "Interest", "Prepayment", "Recovery"], "Cash")
+        return _pv("Cash")
+    elif (cols, idex_name) == (china_bondflow_fields, "日期"):
+        return _pv("本息合计")
+    elif (cols, idex_name) == (english_bondflow_fields, "Date"):
+        return _pv("cash")
+    else:
+        raise RuntimeError("Failed to match", cols, idx_name)
 
 
 def update_deal(d, i, c):
@@ -263,13 +262,12 @@ def mapListValBy(m:dict, f):
 def applyFnToKey(m:dict, f, k, applyNone=False):
     assert isinstance(m, dict), f"{m} is not a map"
     assert k in m, f"{k} is not in map {m}"
-    match (m[k], applyNone):
-        case (None, True):
-            m[k] = f(m[k])
-        case (None, False):
-            pass
-        case (_, _):
-            m[k] = f(m[k])
+    if (m[k], applyNone) == (None, True):
+        m[k] = f(m[k])
+    elif (m[k], applyNone) == (None, False):
+        pass
+    elif (m[k], applyNone) == (_, _):
+        m[k] = f(m[k])
     return m
 
 
@@ -287,41 +285,40 @@ def ensure100(xs, msg=""):
 
 def guess_pool_flow_header(x, l):
     assert isinstance(x, dict), f"x is not a map but {x}, type:{type(x)}"
-    match (x['tag'], len(x['contents']), l):
-        case ('MortgageDelinqFlow', 12, 'chinese'):
-            return (china_mortgage_delinq_flow_fields_d, "日期", False)
-        case ('MortgageDelinqFlow', 13, 'chinese'):
-            return (china_mortgage_delinq_flow_fields_d+china_cumStats, "日期", True)
-        case ('MortgageDelinqFlow', 12, 'english'):
-            return (english_mortgage_delinq_flow_fields_d, "Date", False)
-        case ('MortgageDelinqFlow', 13, 'english'):
-            return (english_mortgage_delinq_flow_fields_d+english_cumStats, "Date", True)
-        case ('MortgageFlow', 11, 'chinese'):
-            return (china_mortgage_flow_fields_d, "日期", False)
-        case ('MortgageFlow', 12, 'chinese'):
-            return (china_mortgage_flow_fields_d+china_cumStats, "日期", True)
-        case ('MortgageFlow', 11, 'english'):
-            return (english_mortgage_flow_fields_d, "Date", False)
-        case ('MortgageFlow',12,'english'):
-            return (english_mortgage_flow_fields_d+english_cumStats, "Date", True)
-        case ('LoanFlow',9,'chinese'):
-            return (china_loan_flow_d,"日期",False)
-        case ('LoanFlow',10,'chinese'):
-            return (china_loan_flow_d+china_cumStats,"日期",True)
-        case ('LoanFlow',9,'english'):
-            return (english_loan_flow_d,"Date",False)
-        case ('LoanFlow',10,'english'):
-            return (english_loan_flow_d+english_cumStats,"Date",True)
-        case ('LeaseFlow',3,'chinese'):
-            return (china_rental_flow_d,"日期",False)
-        case ('LeaseFlow',3,'english'):
-            return (english_rental_flow_d,"Date",False)
-        case ('FixedFlow',6,'chinese'):
-            return (china_fixed_flow_d,"日期",False)
-        case ('FixedFlow',6,'english'):
-            return (english_fixed_flow_d,"Date",False)
-        case _:
-            raise RuntimeError(f"Failed to match pool header with {x['tag']}{l}")
+    if (x['tag'], len(x['contents']), l) == ('MortgageDelinqFlow', 12, 'chinese'):
+        return (china_mortgage_delinq_flow_fields_d, "日期", False)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageDelinqFlow', 13, 'chinese'):
+        return (china_mortgage_delinq_flow_fields_d+china_cumStats, "日期", True)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageDelinqFlow', 12, 'english'):
+        return (english_mortgage_delinq_flow_fields_d, "Date", False)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageDelinqFlow', 13, 'english'):
+        return (english_mortgage_delinq_flow_fields_d+english_cumStats, "Date", True)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageFlow', 11, 'chinese'):
+        return (china_mortgage_flow_fields_d, "日期", False)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageFlow', 12, 'chinese'):
+        return (china_mortgage_flow_fields_d+china_cumStats, "日期", True)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageFlow', 11, 'english'):
+        return (english_mortgage_flow_fields_d, "Date", False)
+    elif (x['tag'], len(x['contents']), l) == ('MortgageFlow',12,'english'):
+        return (english_mortgage_flow_fields_d+english_cumStats, "Date", True)
+    elif (x['tag'], len(x['contents']), l) == ('LoanFlow',9,'chinese'):
+        return (china_loan_flow_d,"日期",False)
+    elif (x['tag'], len(x['contents']), l) == ('LoanFlow',10,'chinese'):
+        return (china_loan_flow_d+china_cumStats,"日期",True)
+    elif (x['tag'], len(x['contents']), l) == ('LoanFlow',9,'english'):
+        return (english_loan_flow_d,"Date",False)
+    elif (x['tag'], len(x['contents']), l) == ('LoanFlow',10,'english'):
+        return (english_loan_flow_d+english_cumStats,"Date",True)
+    elif (x['tag'], len(x['contents']), l) == ('LeaseFlow',3,'chinese'):
+        return (china_rental_flow_d,"日期",False)
+    elif (x['tag'], len(x['contents']), l) == ('LeaseFlow',3,'english'):
+        return (english_rental_flow_d,"Date",False)
+    elif (x['tag'], len(x['contents']), l) == ('FixedFlow',6,'chinese'):
+        return (china_fixed_flow_d,"日期",False)
+    elif (x['tag'], len(x['contents']), l) == ('FixedFlow',6,'english'):
+        return (english_fixed_flow_d,"Date",False)
+    else:
+        raise RuntimeError(f"Failed to match pool header with {x['tag']}{l}")
 
 
 def uplift_m_list(l:list):

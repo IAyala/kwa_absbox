@@ -9,7 +9,7 @@ from rich.json import JSON
 import requests
 from requests.exceptions import ConnectionError, ReadTimeout
 import pandas as pd
-from pyspecter import query
+# from pyspecter import query
 
 from absbox.local.util import mkTag, isDate, flat, guess_pool_locale, mapValsBy, guess_pool_flow_header\
                               , _read_cf, _read_asset_pricing, mergeStrWithDict\
@@ -62,22 +62,23 @@ class API:
         r = None
         _nonPerfAssump = mkNonPerfAssumps({}, nonPerfAssump)
 
-        match run_type:
-            case "Single" | "S":
-                _deal = deal.json if hasattr(deal, "json") else deal
-                _perfAssump = earlyReturnNone(mkAssumpType, perfAssump)
-                r = mkTag(("SingleRunReq",[_deal, _perfAssump, _nonPerfAssump]))
-            case "MultiScenarios" | "MS":
-                _deal = deal.json if hasattr(deal, "json") else deal
-                mAssump = mapValsBy(perfAssump, mkAssumpType)
-                r = mkTag(("MultiScenarioRunReq",[_deal, mAssump, _nonPerfAssump]))
-            case "MultiStructs" | "MD" :
-                mDeal = {k: v.json if hasattr(v, "json") else v for k, v in deal.items() }
-                _perfAssump = mkAssumpType(perfAssump)
-                r = mkTag(("MultiDealRunReq",[mDeal, _perfAssump, _nonPerfAssump]))
-            case _:
-                raise RuntimeError(f"Failed to match run type:{run_type}")
+        if run_type in ["Single", "S"]:
+            _deal = deal.json if hasattr(deal, "json") else deal
+            _perfAssump = earlyReturnNone(mkAssumpType, perfAssump)
+            r = mkTag(("SingleRunReq", [_deal, _perfAssump, _nonPerfAssump]))
+        elif run_type in ["MultiScenarios", "MS"]:
+            _deal = deal.json if hasattr(deal, "json") else deal
+            mAssump = mapValsBy(perfAssump, mkAssumpType)
+            r = mkTag(("MultiScenarioRunReq", [_deal, mAssump, _nonPerfAssump]))
+        elif run_type in ["MultiStructs", "MD"]:
+            mDeal = {k: v.json if hasattr(v, "json") else v for k, v in deal.items()}
+            _perfAssump = mkAssumpType(perfAssump)
+            r = mkTag(("MultiDealRunReq", [mDeal, _perfAssump, _nonPerfAssump]))
+        else:
+            raise RuntimeError(f"Failed to match run type:{run_type}")
+
         return json.dumps(r, ensure_ascii=False)
+
 
     def build_pool_req(self, pool, poolAssump, rateAssumps, read=None) -> str:
         r = None
@@ -289,13 +290,12 @@ class API:
         result = self._send_req(runReq, deal_library_url, headers={"Authorization":f"Bearer {self.token}"})
         
         def lookupReader(x):
-            match x:
-                case "china.SPV":
-                    return SPV
-                case "generic.Generic":
-                    return Generic
-                case _:
-                    raise RuntimeError(f"Failed to match reader:{x}")
+            if x == "china.SPV":
+                return SPV
+            elif x == "generic.Generic":
+                return Generic
+            else:
+                raise RuntimeError(f"Failed to match reader:{x}")
         try:
             ri = result['run_info']
             result = result['run_result']

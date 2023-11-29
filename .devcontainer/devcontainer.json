@@ -1,0 +1,5 @@
+{
+	"name": "Python 3",
+	"image": "python:3.9.10",
+	"postCreateCommand": "./postcreatecommand.sh"
+}

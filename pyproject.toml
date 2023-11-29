@@ -3,19 +3,25 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-version = "0.23.3"
 name = "absbox"
+version = "0.23.3"
 
-dependencies = [
-    "pandas ==1.4.3",
-    "numpy ==1.23.1",
-    "matplotlib ==3.5.2",
-    "requests",
-    "rich",
-    "pyxirr",
-    "pyspecter",
-    "graphviz"
-]
+[tool.poetry]
+name = "absbox"
+version = "0.23.3"
+authors = []
+description = "An absbox version that hopefully works in Beacon"
+
+[tool.poetry.dependencies]
+python = "3.9.10"
+pandas = "1.4.3"
+numpy = "1.23.1"
+matplotlib = "3.5.2"
+requests = "2.31.0"
+rich = "13.7.0"
+pyxirr = "0.9.3"
+#pyspecter = "0.1.1"
+graphviz = "0.20.1"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
