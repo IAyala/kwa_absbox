@@ -114,7 +114,7 @@ def mkDate(x):
 
 def mkDsRate(x):
     if isinstance(x,float):
-        return mkDs(("constant", x))
+        return mkDs(("constant",x))
     else:
         return mkDs(x)
 
@@ -150,7 +150,6 @@ def mkFeeType(x):
         return mkTag(("TargetBalanceFee", [mkDs(ds1), mkDs(ds2)]))
     else:
         raise RuntimeError(f"Failed to match on fee type: {x}")
-
 
 
 def mkDateVector(x):
@@ -323,8 +322,8 @@ def mkDs(x):
     else:
         raise RuntimeError(f"Failed to match DS/Formula: {x}")
 
-def mkCurve(tag, xs):
-    return mkTag((tag, xs))
+def mkCurve(tag,xs):
+    return mkTag((tag,xs))
 
 def mkPre(p):
     def queryType(y):
@@ -376,11 +375,9 @@ def mkAccInt(x):
             return mkTag(("InvestmentAccount", [x["利率"], x["利差"], x["最近结息日"], mkDatePattern(x["周期"])]))
         elif "周期" in x and "利率" in x and "最近结息日" in x:
             return mkTag(("BankAccount", [x["利率"], x["最近结息日"], mkDatePattern(x["周期"])]))
-        elif x == None:
+        elif x is None:
             return None
-        else:
-            raise RuntimeError(f"Failed to match on account interest definition: {x}")
-
+        raise RuntimeError(f"Failed to match on Pre: {p}")
 
 
 def mkAccType(x):
@@ -475,6 +472,7 @@ def mkBondRate(x):
             return mkTag((rate_type, [mkBondRate(x[rate_type][1]), x[rate_type][0]]))
     else:
         raise RuntimeError(f"Failed to match bond rate type:{x}")
+
         
 def mkStepUp(x):
     if x == ("ladder",d,spd,dp):
