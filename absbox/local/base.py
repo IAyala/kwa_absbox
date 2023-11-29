@@ -13,7 +13,7 @@ english_cumStats = ["CumPrincipal","CumPrepay","CumDelinq","CumDefault","CumReco
 # Pool
 ## mortgage
 china_mortgage_flow_fields = ["余额", "本金", "利息", "早偿金额", "违约金额", "回收金额", "损失金额", "利率", "债务人数量","早偿手续费"]
-english_mortgage_flow_fields = ["Balance", "Principal", "Interest", "Prepayment", "Default", "Recovery", "Loss", "WAC","BorrowerNum","PrepayPenalty"]
+english_mortgage_flow_fields = ["Balance", "Principal", "Interest",  "Prepayment", "Default", "Recovery", "Loss", "WAC","BorrowerNum","PrepayPenalty"]
 
 china_mortgage_delinq_flow_fields = ["余额", "本金", "利息", "早偿金额", "拖欠金额", "违约金额", "回收金额", "损失金额", "利率", "债务人数量","早偿手续费"]
 english_mortgage_delinq_flow_fields = ["Balance", "Principal", "Interest", "Prepayment", "Delinquency", "Default", "Recovery", "Loss", "WAC","BorrowerNum","PrepayPenalty"]
@@ -76,11 +76,17 @@ datePattern = {"月末": "MonthEnd", "季度末": "QuarterEnd", "年末": "YearE
 
 freqMap = {"每月": "Monthly", "每季度": "Quarterly", "每半年": "SemiAnnually", "每年": "Annually", "Monthly": "Monthly", "Quarterly": "Quarterly", "SemiAnnually": "SemiAnnually", "Annually": "Annually", "monthly": "Monthly", "quarterly": "Quarterly", "semiAnnually": "SemiAnnually", "annually": "Annually" }
 
-rateLikeFormula = set(["bondFactor", "poolFactor", "cumPoolDefaultedRate", "资产池累计违约率", "债券系数", "资产池系数"])
-intLikeFormula = set(["borrowerNumber", "monthsTillMaturity"])
-boolLikeFormula = set(["trigger", "事件", "isMostSenior", "最优先","isPaidOff","清偿完毕","rateTest","allTest","anyTest","比率测试","任一测试","所有测试"])
+rateLikeFormula = set(["bondFactor","poolFactor","cumPoolDefaultedRate","资产池累计违约率","债券系数","资产池系数"])
+intLikeFormula = set(["borrowerNumber","monthsTillMaturity"])
+boolLikeFormula = set(["trigger","事件","isMostSenior","最优先"])
 
-op_map = {">":"G", ">=":"GE", "<":"L", "<=":"LE", "=":"E"}
+op_map = {
+    ">":"G"
+    ,">=":"GE"
+    ,"<":"L"
+    ,"<=":"LE"
+    ,"=":"E"
+}
 
 #Deal Cycle
 chinaDealCycle = {"回收后":"EndCollection"

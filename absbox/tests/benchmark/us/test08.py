@@ -22,8 +22,7 @@ GNMA_36208ALG4 = Generic(
         ,"stated":"2070-01-01"
         ,"poolFreq":"MonthEnd"
         ,"payFreq":["DayOfMonth",20]}
-    ,{'assets':[asset]
-      ,'issuanceStat':{"IssuanceBalance":10000}}
+    ,{'assets':[asset]}
     ,(("acc01",{"balance":0}),)
     ,(("A1",{"balance":20_899.37
              ,"rate":0.025
