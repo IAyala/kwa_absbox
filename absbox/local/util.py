@@ -19,12 +19,13 @@ def mapNone(x,v):
 def flat(xss) -> list:
     return reduce(lambda xs, ys: xs + ys, xss)
 
-def mkTag(x:tuple) -> dict:
-    if len(x) == 2:
+def mkTag(x) -> dict:
+    if isinstance(x, tuple) and len(x) == 2:
         return {"tag": x[0], "contents": x[1]}
-    elif len(x) == 1:
+    elif isinstance(x, tuple) and len(x) == 1:
         return {"tag": x[0]}
-
+    elif isinstance(x, str):
+        return {"tag": x}
 
 def readTagStr(x:str) -> str:
     #print("tag",type(x),x)

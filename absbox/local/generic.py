@@ -32,12 +32,13 @@ class Generic:
     def json(self):
         dists,collects,cleans = [ self.waterfall.get(wn,[]) for wn in ['Normal','PoolCollection','CleanUp']]
         distsAs,collectsAs,cleansAs = [ [ mkWaterfall2(_action) for _action in _actions] for _actions in [dists,collects,cleans] ]
-        distsflt,collectsflt,cleanflt = [ itertools.chain.from_iterable(x) for x in [distsAs,collectsAs,cleansAs] ]
+        distsflt,collectsflt,cleanflt = [ itertools.chain.from_iterable(x) for x in [distsAs,collectsAs,cleansAs] ]        
         parsedDates = mkDate(self.dates)
         (lastAssetDate,lastCloseDate) = getStartDate(self.dates)
         """
         get the json formatted string
         """
+        
         _r = {
             "dates": parsedDates,
             "name": self.name,
@@ -61,9 +62,7 @@ class Generic:
                                for ln,lo in self.liqFacility.items() } if self.liqFacility else None,
             "ledgers": {ln: mkLedger(ln, v) for ln,v in self.ledgers.items()} if self.ledgers else None
         }
-
         _dealType = identify_deal_type(_r)
-
         return mkTag((_dealType,_r))
 
     def read_assump(self, assump):

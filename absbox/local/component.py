@@ -27,29 +27,33 @@ def mkLiq(x):
 
 def mkDatePattern(x):
     ''' make date pattern '''
-    if isinstance(x, tuple):
-        if x[0] in ("DayOfMonth", "每月") and isinstance(x[1], tuple):
-            return mkTag(("DayOfMonth", x[1]))
-        elif x[0] in ("MonthDayOfYear", "每年") and len(x) == 3:
-            return mkTag(("MonthDayOfYear", x[1], x[2]))
-        elif x[0] == "CustomDate" and len(x) > 1:
-            return mkTag(("CustomDate", x[1:]))
-        elif x[0] == "EveryNMonth" and len(x) == 3:
-            return mkTag(("EveryNMonth", [x[1], x[2]]))
-        elif x[0] in ("All", "AllDatePattern") and len(x) > 1:
-            return mkTag(("AllDatePattern", [mkDatePattern(_) for _ in x[1:]]))
-        elif x[0] in ("After", "之后") and len(x) == 3:
-            return mkTag(("StartsExclusive", [x[1], mkDatePattern(x[2])]))
-        elif x[0] in ("Exclude", "排除") and len(x) == 3:
-            return mkTag(("Exclude", [mkDatePattern(x[1]), [mkDatePattern(_) for _ in x[2]]]))
-        elif x[0] in ("Offset", "平移") and len(x) == 3:
-            return mkTag(("OffsetBy", [mkDatePattern(x[1]), x[2]]))
-        elif x in datePattern.values():
-            return mkTag((x))
-        elif x in datePattern.keys():
-            return mkTag((datePattern[x]))
-        else:
-            raise RuntimeError(f"Failed to match {x}")
+    if len(x) == 2 and x[0] == "每月":
+        return mkTag((datePattern["每月"], x[1]))
+    elif len(x) == 3 and x[0] == "每年":
+        return mkTag((datePattern["每年"], [x[1], x[2]]))
+    elif len(x) == 2 and x[0] == "DayOfMonth":
+        return mkTag(("DayOfMonth", x[1]))
+    elif len(x) == 3 and x[0] == "MonthDayOfYear":
+        return mkTag(("MonthDayOfYear", x[1], x[2]))
+    elif len(x) >= 1 and x[0] == "CustomDate":
+        return mkTag(("CustomDate", x[1:]))
+    elif len(x) == 3 and x[0] == "EveryNMonth":
+        return mkTag(("EveryNMonth", [x[1], x[2]]))
+    elif len(x) >= 1 and x[0] == "AllDatePattern":
+        return mkTag(("AllDatePattern", [mkDatePattern(_) for _ in x[1:]]))
+    elif len(x) == 3 and (x[0] == "After" or x[0] == "之后"):
+        return mkTag(("StartsExclusive", [x[1], mkDatePattern(x[2])]))
+    elif len(x) == 3 and (x[0] == "ExcludeDatePattern" or x[0] == "排除"):
+        return mkTag(("Exclude", [mkDatePattern(x[1]), [mkDatePattern(_) for _ in x[2]]]))
+    elif len(x) == 3 and (x[0] == "OffsetDateDattern" or x[0] == "平移"):
+        return mkTag(("OffsetBy", [mkDatePattern(x[1]), x[2]]))
+    elif x in datePattern.values():
+        return mkTag((x,))
+    elif x in datePattern.keys():
+        return mkTag((datePattern[x],))
+    else:
+        raise RuntimeError(f"Failed to match {x}")
+
 
 
 def getStartDate(x):
@@ -64,53 +68,46 @@ def getStartDate(x):
 
 def mkDate(x):
     ''' make date component for deal '''
-    if ("封包日" in x or "cutoff" in x) and \
-        ("起息日" in x or "closing" in x) and \
-        ("首次兑付日" in x or "firstPay" in x) and \
-        ("法定到期日" in x or "stated" in x) and \
-        ("收款频率" in x or "poolFreq" in x) and \
-        ("付款频率" in x or "payFreq" in x):
-        firstCollection = x.get("首次归集日", x.get("closing"))
+    if ("封包日" in x or "起息日" in x or "首次兑付日" in x or "法定到期日" in x or "收款频率" in x or "付款频率" in x) or \
+        ("cutoff" in x or "closing" in x or "firstPay" in x or "stated" in x or "poolFreq" in x or "payFreq" in x):
+        a = x.get("封包日", x.get("cutoff", None))
+        b = x.get("起息日", x.get("closing", None))
+        c = x.get("首次兑付日", x.get("firstPay", None))
+        d = x.get("法定到期日", x.get("stated", None))
+        pf = x.get("收款频率", x.get("poolFreq", None))
+        bf = x.get("付款频率", x.get("payFreq", None))
+        firstCollection = x.get("首次归集日", b)
         mr = x.get("循环结束日", None)
-        result = mkTag(("PreClosingDates", [
-            x.get("封包日", x.get("cutoff")),
-            x.get("起息日", x.get("closing")),
-            mr,
-            x.get("法定到期日", x.get("stated")),
-            [firstCollection, mkDatePattern(x.get("收款频率", x.get("poolFreq")))],
-            [x.get("首次兑付日", x.get("firstPay")), mkDatePattern(x.get("付款频率", x.get("payFreq")))]
-        ]))
-        return result
 
-    elif ("归集日" in x or "collect" in x) and \
-        ("兑付日" in x or "pay" in x) and \
-        ("法定到期日" in x or "stated" in x) and \
-        ("收款频率" in x or "poolFreq" in x) and \
-        ("付款频率" in x or "payFreq" in x):
+        return mkTag(("PreClosingDates", [a, b, mr, d, [firstCollection, mkDatePattern(pf)], [c, mkDatePattern(bf)]]))
+
+    elif ("归集日" in x or "兑付日" in x or "法定到期日" in x or "收款频率" in x or "付款频率" in x) or \
+        ("collect" in x or "pay" in x or "stated" in x or "poolFreq" in x or "payFreq" in x):
+        lastCollected, nextCollect = x.get("归集日", x.get("collect", (None, None)))
+        pp, np = x.get("兑付日", x.get("pay", (None, None)))
+        c = x.get("法定到期日", x.get("stated", None))
+        pf = x.get("收款频率", x.get("poolFreq", None))
+        bf = x.get("付款频率", x.get("payFreq", None))
+
         mr = x.get("循环结束日", None)
-        result = mkTag(("CurrentDates", [
-        [x.get("归集日", x.get("collect"))[0], x.get("兑付日", x.get("pay"))[0]],
-        mr,
-        x.get("法定到期日", x.get("stated")),
-        [x.get("归集日", x.get("collect"))[1], mkDatePattern(x.get("收款频率", x.get("poolFreq")))],
-        [x.get("兑付日", x.get("pay"))[1], mkDatePattern(x.get("付款频率", x.get("payFreq")))]
-        ]))
-        return result
 
-    elif ("回款日" in x or "poolCollection" in x) and \
-         ("分配日" in x or "distribution" in x) and \
-         ("封包日" in x or "cutoff" in x) and \
-         ("起息日" in x or "closing" in x):
-        result = mkTag(("CustomDates", [
-        x.get("封包日", x.get("cutoff")),
-        [mkTag(("PoolCollection", [cd, ""])) for cd in x.get("回款日", x.get("poolCollection"))],
-        x.get("起息日", x.get("closing")),
-        [mkTag(("RunWaterfall", [dd, ""])) for dd in x.get("分配日", x.get("distribution"))]
-        ]))
-        return result
+        return mkTag(("CurrentDates", [[lastCollected, pp],
+                                       mr,
+                                       c,
+                                       [nextCollect, mkDatePattern(pf)],
+                                       [np, mkDatePattern(bf)]]))
+
+    elif ("回款日" in x or "分配日" in x or "封包日" in x or "起息日" in x) or \
+        ("poolCollection" in x or "distirbution" in x or "cutoff" in x or "closing" in x):
+        cdays = x.get("回款日", x.get("poolCollection", None))
+        ddays = x.get("分配日", x.get("distirbution", None))
+        cutoffDate = x.get("封包日", x.get("cutoff", None))
+        closingDate = x.get("起息日", x.get("closing", None))
+
+        return mkTag(("CustomDates", [cutoffDate, [mkTag(("PoolCollection", [cd, ""])) for cd in cdays], closingDate, [mkTag(("RunWaterfall", [dd, ""])) for dd in ddays]]))
 
     else:
-        raise RuntimeError(f"Failed to match:{x} in Dates")
+        raise RuntimeError(f"Failed to match: {x} in Dates")
 
 def mkDsRate(x):
     if isinstance(x,float):
@@ -749,96 +746,180 @@ def mkSupport(x:list):
 def mkAction(x: list):
     ''' make waterfall actions '''
 
-    def mkMod(y: dict) -> tuple:
-        limit = getValWithKs(y, ['limit', "限制"], mapping=mkLimit)
-        support = getValWithKs(y, ['support', "支持"], mapping=mkSupport)
-        return (limit, support)
-
-    if x[0] in ["账户转移", "transfer"]:
-        if len(x) == 4:
-            return mkTag(("Transfer", [mkLimit(x[3]), x[1], x[2], None]))
-        elif len(x) == 3:
-            return mkTag(("Transfer", [None, x[1], x[2], None]))
-    elif x[0] in ["簿记", "bookBy"]:
-        return mkTag(("BookBy", mkBookType(x[1])))
-    elif x[0] in ["计提费用", "calcFee"]:
-        return mkTag(("CalcFee", x[1:]))
-    elif x[0] in ["计提利息", "calcInt"]:
-        return mkTag(("CalcBondInt", x[1:]))
-    elif x[0] in ["计提支付费用", "calcAndPayFee"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("CalcAndPayFee", [l, x[1], x[2], s]))
-    elif x[0] in ["顺序支付费用", "payFeeBySeq"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayFeeBySeq", [l, x[1], x[2], s]))
-    elif x[0] in ["支付费用", "payFee"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayFee", [l, x[1], x[2], s]))
-    elif x[0] in ["支付费用收益", "payFeeResidual"]:
-        if len(x) == 4:
-            return mkTag(("PayFeeResidual", [mkLimit(x[3]), x[1], x[2]]))
-        elif len(x) == 3:
-            return mkTag(("PayFeeResidual", [None, x[1], x[2]]))
-    elif x[0] in ["计提支付利息", "accrueAndPayInt"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("AccrueAndPayInt", [l, x[1], x[2], s]))
-    elif x[0] in ["顺序计提支付利息", "accrueAndPayIntBySeq"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("AccrueAndPayIntBySeq", [l , x[1], x[2], s]))
-    elif x[0] in ["支付利息", "payInt"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayInt", [l, x[1], x[2], s]))
-    elif x[0] in ["顺序支付利息", "payIntBySeq"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayIntBySeq", [l, x[1], x[2], s]))
-    elif x[0] in ["顺序支付本金", "payPrinBySeq"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayPrinBySeq", [l, x[1], x[2], s]))
-    elif x[0] in ["支付本金", "payPrin"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayPrin", [l, x[1], x[2], s]))
-    elif x[0] in ["支付剩余本金", "payPrinResidual"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayPrinResidual", [l, x[1], x[2], s]))
-    elif x[0] in ["支付收益", "payIntResidual"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("PayIntResidual", [l, x[1], x[2], s]))
-    elif x[0] in ["出售资产", "sellAsset"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("LiquidatePool", [l, x[1], x[2], s]))
-    elif x[0] in ["流动性支持", "liqSupport"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("LiqSupport", [l, x[1], x[2], s]))
-    elif x[0] in ["流动性支持偿还", "liqRepay"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("LiqRepay", [l, x[1], x[2], s]))
-    elif x[0] in ["流动性支持报酬", "liqRepayResidual"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("LiqYield", [l, x[1], x[2], s]))
-    elif x[0] in ["流动性支持计提", "liqAccrue"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("LiqAccrue", [l, x[1], x[2], s]))
-    elif x[0] in ["结算", "settleSwap"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("SwapSettle", [l, x[1], x[2], s]))
-    elif x[0] in ["利率结算", "settleCap"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("CollectRateCap", [l, x[1], x[2], s]))
-    elif x[0] in ["条件执行", "If"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("ActionWithPre", [l, x[1], x[2], s]))
-    elif x[0] in ["条件执行2", "IfElse"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("ActionWithPre2", [l, x[1], x[2], s]))
-    elif x[0] in ["购买资产", "buyAsset"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("BuyAsset", [l, x[1], x[2], s]))
-    elif x[0] in ["更新事件", "runTrigger"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("RunTrigger", [l, x[1], x[2], s]))
-    elif x[0] in ["查看", "inspect"]:
-        (l, s) = mkMod(x[3]) if len(x) == 4 else (None, None)
-        return mkTag(("WatchVal", [l, x[1], x[2], s]))
+    if (x[0] in ["账户转移"] or x[0] in ["transfer"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        return mkTag(("Transfer", [mkLimit(m), source, target, None]))
+    elif (x[0] in ["账户转移"] or x[0] in ["transfer"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("Transfer", [None, source, target, None]))
+    elif (x[0] in ["簿记"] or x[0] in ["bookBy"]) and len(x) == 2:
+        bookType = x[1]
+        return mkTag(("BookBy", mkBookType(bookType)))
+    elif (x[0] in ["计提费用"] or x[0] in ["calcFee"]) and len(x) == 2:
+        feenames = [x[1]]
+        return mkTag(("CalcFee", feeNames))
+    elif (x[0] in ["计提利息"] or x[0] in ["calcInt"]) and len(x) == 2:
+        bndNames = [x[1]]
+        return mkTag(("CalcBondInt", bndNames))
+    elif (x[0] in ["计提支付费用"] or x[0] in ["calcAndPayFee"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        limit = getValWithKs(m, ['limit', "限制"])
+        support = getValWithKs(m, ['support', "支持"])
+        return mkTag(("CalcAndPayFee", [mkLimit(limit), source, target, mkSupport(support)]))
+    elif (x[0] in ["计提支付费用"] or x[0] in ["calcAndPayFee"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("CalcAndPayFee",[None, source, target, None]))
+    elif (x[0] == "payFee" or x[0] == "支付费用") and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        limit = getValWithKs(m, ['limit', "限制"])
+        support = getValWithKs(m, ['support', "支持"])
+        return mkTag(("PayFee", [mkLimit(limit), source, target, mkSupport(support)]))
+    elif (x[0] == "支付费用" or x[0] == "payFee") and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayFee", [None, source, target, None]))
+    elif (x[0] in ["支付费用收益"] or x[0] in ["payFeeResidual"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        limit = x[3]
+        return mkTag(("PayFeeResidual", [mkLimit(limit), source, target]))
+    elif (x[0] in ["支付费用收益"] or x[0] in ["payFeeResidual"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayFeeResidual",[None, source, target, None]))
+    elif (x[0] in ["计提支付利息"] or x[0] in ["accrueAndPayInt"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        limit = getValWithKs(m, ['limit', "限制"])
+        support = getValWithKs(m, ['support', "支持"])
+        return mkTag(("AccrueAndPayInt", [mkLimit(limit), source, target, mkSupport(support)]))
+    elif (x[0] in ["计提支付利息"] or x[0] in ["accrueAndPayInt"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("AccrueAndPayInt",[None, source, target, None]))
+    elif (x[0] in ["支付利息"] or x[0] in ["payInt"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        limit = getValWithKs(m, ['limit', "限制"])
+        support = getValWithKs(m, ['support', "支持"])
+        return mkTag(("PayInt", [mkLimit(limit), source, target, mkSupport(support)]))
+    elif (x[0] in ["支付利息"] or x[0] in ["payInt"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayInt",[None, source, target, None]))
+    elif (x[0] in ["顺序支付本金"] or x[0] in ["payPrinBySeq"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        limit = getValWithKs(m, ['limit', "限制"])
+        support = getValWithKs(m, ['support', "支持"])
+        return mkTag(("PayPrinBySeq", [mkLimit(limit), source, target, mkSupport(support)]))
+    elif (x[0] in ["顺序支付本金"] or x[0] in ["payPrinBySeq"]) and len(x)==3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayPrinBySeq",[None, source, target, None]))
+    elif (x[0] in ["支付本金"] or x[0] in ["payPrin"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        m = x[3]
+        limit = getValWithKs(m, ['limit', "限制"])
+        support = getValWithKs(m, ['support', "支持"])
+        return mkTag(("PayPrin", [mkLimit(limit), source, target, mkSupport(support)]))
+    elif (x[0] in ["支付本金"] or x[0] in ["payPrin"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayPrin",[None, source, target, None]))
+    elif (x[0] in ["支付剩余本金"] or x[0] in ["payPrinResidual"]) and len(x) ==3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayPrinResidual",[source, target]))
+    elif (x[0] in ["支付收益"] or x[0] in ["payIntResidual"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        limit = getValWithKs(m,['limit',"限制"])
+        return mkTag(("PayIntResidual",[mkLimit(limit), source, target]))
+    elif (x[0] in ["支付收益"] or x[0] in ["payIntResidual"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("PayIntResidual",[source, target]))
+    elif (x[1] in ["出售资产"] or x[0] in ["sellAsset"]) and len(x) == 3:
+        liq = x[1]
+        target = x[2]
+        return mkTag(("LiquidatePool",[mkLiqMethod(liq), target]))
+    elif (x[0] in ["流动性支持"] or x[0] in ["liqSupport"]) and len(x) == 5:
+        source = x[1]
+        liqType = x[2]
+        target = x[3]
+        limit = x[4]
+        return mkTag(("LiqSupport",[mkLimit(limit), source, mkLiqDrawType(liqType), target]))
+    elif (x[0] in ["流动性支持"] or x[0] in ["liqSupport"]) and len(x) == 4:
+        source = x[1]
+        liqType = x[2]
+        target = x[3]
+        return mkTag(("LiqSupport",[None, source, mkLiqDrawType(liqType), target]))
+    elif (x[0] in ["流动性支持偿还"] or x[0] in ["liqRepay"]) and len(x) == 4:
+        rpt = x[1]
+        source = x[2]
+        target = x[3]
+        return mkTag(("LiqRepay",[None, mkLiqRepayType(rpt), source, target]))
+    elif (x[0] in ["流动性支持偿还"] or x[0] in ["liqRepay"]) and len(x) == 5:
+        rpt = x[1]
+        source = x[2]
+        target = x[3]
+        limit = x[4]
+        return mkTag(("LiqRepay",[mkLimit(limit), mkLiqRepayType(rpt), source, target]))
+    elif (x[0] in ["流动性支持报酬"] or x[0] in ["liqRepayResidual"]) and len(x) == 3:
+        source = x[1]
+        target = x[2]
+        return mkTag(("LiqYield",[None, source, target]))
+    elif (x[0] in ["流动性支持报酬"] or x[0] in ["liqRepayResidual"]) and len(x) == 4:
+        source = x[1]
+        target = x[2]
+        limit = x[3]
+        return mkTag(("LiqYield",[mkLimit(limit), source, target]))
+    elif (x[0] in ["流动性支持计提"] or x[0] in ["liqAccrue"]) and len(x) == 2:
+        target = x[1]
+        return mkTag(("LiqAccrue", target))
+    elif (x[0] in ["结算"] or x[0] in ["settleSwap"]) and len(x) == 3:
+        acc = x[1]
+        swapName = x[2]
+        return mkTag(("SwapSettle", [acc, swapName]))
+    elif (x[0] in ["条件执行"] or x[0] in ["If"]) and len(x) == 3:
+        pre = x[1]
+        actions = [x[2]]
+        return mkTag(("ActionWithPre", [mkPre(pre), [mkAction(a) for a in actions]]))
+    elif (x[0] in ["条件执行2"] or x[0] in ["IfElse"]) and len(x) == 4:
+        pre = x[1]
+        actions = x[2]
+        actions2 = x[3]
+        return mkTag(("ActionWithPre2", [mkPre(pre), [mkAction(a) for a in actions1], [mkAction(a) for a in actions2]]))
+    elif (x[0] in ["购买资产"] or x[0] in ["buyAsset"]) and len(x) == 4:
+        liq = x[1]
+        source = x[2]
+        _limit = x[3]
+        return mkTag(("BuyAsset", [mkLimit(_limit), mkLiqMethod(liq), source]))
+    elif (x[0] in ["购买资产"] or x[0] in ["buyAsset"]) and len(x) == 3:
+        liq = x[1]
+        source = x[2]
+        return mkTag(("BuyAsset", [None, mkLiqMethod(liq), source]))
+    elif (x[0] in ["更新事件"] or x[0] in ["runTrigger"]) and len(x) == 2:
+        trgName = z[1]
+        dealCycleM = chinaDealCycle | englishDealCycle
+        return mkTag(("RunTrigger", ["InWF", trgName]))
+    elif (x[0] in ["查看"] or x[0] in ["inspect"]) and len(x) == 3:
+        comment = x[1]
+        ds = [x[2]]
+        return mkTag(("WatchVal", [comment, [mkDs(_) for _ in ds]]))
 
     else:
         raise RuntimeError(f"Failed to match :{x}:mkAction")
@@ -876,21 +957,21 @@ def readStatus(x, locale):
         , "cn": {'amort': "摊销", 'def': "违约", 'acc': "加速清偿", 'end': "结束", 'pre': "设计","revol":"循环"
                  ,'called':"清仓回购"
                  ,'ramp':"RampUp"}}
-    if x == {"tag": "Amortizing"}:
+    if x["tag"] == "Amortizing":
         return m[locale]['amort']
-    elif x == {"tag": "DealAccelerated"}:
+    elif x["tag"]=="DealAccelerated":
         return m[locale]['acc']
-    elif x == {"tag": "DealDefaulted"}:
+    elif x["tag"]=="DealDefaulted":
         return m[locale]['def']
-    elif x == {"tag": "Ended"}:
+    elif x["tag"]=="Ended":
         return m[locale]['end']
-    elif x == {"tag": "PreClosing"}:
+    elif x["tag"]== "PreClosing":
         return m[locale]['pre']
-    elif x == {"tag": "Revolving"}:
+    elif x["tag"] == "Revolving":
         return m[locale]['revol']
-    elif x == {"tag": "Called"}:
+    elif x["tag"] == "Called":
         return m[locale]['called']
-    elif x == {"tag": "RampUp"}:
+    elif x["tag"]=="RampUp":
         return m[locale]['ramp']
     else:
         raise RuntimeError(
@@ -984,7 +1065,6 @@ def mkWaterfall(r, x):
         _w_tag = "DefaultDistribution"
     else:
         raise RuntimeError(f"Failed to match :{_k}:mkWaterfall")
-
     r[_w_tag] = [mkAction(_a) for _a in _v]
     return mkWaterfall(r, x)
 
@@ -1359,15 +1439,12 @@ def mkPDF(a,b,c):
 
 def mkAssumpType(x):
     ''' make assumps either on pool level or asset level '''
-    if isinstance(x, tuple) and len(x) == 4 and x[0] == "Pool":
-        p, d, f = x[1:]
-        return mkTag(("PoolLevel", mkPDF(p, d, f)))
-    elif isinstance(x, tuple) and x[0] == "ByIndex":
-        ps = x[1:]
-        return mkTag(("ByIndex", [[idx, mkPDF(a, b, c)] for idx, (a, b, c) in ps]))
-    else:
+    if x[0] == "Pool":
+        return mkTag(("PoolLevel",mkPDF(x[1], x[2], x[3])))
+    elif x[0] == "ByIndex":
+        return mkTag(("ByIndex",[ [idx, mkPDF(a,b,c)] for (idx,(a,b,c)) in x[1]]))
+    else :
         raise RuntimeError(f"failed to match {x} | mkAssumpType")
-
 
 def mkAssetUnion(x):
     if x[0] == "AdjustRateMortgage" | "Mortgage" | "按揭贷款" :
@@ -1519,28 +1596,17 @@ def mkFee(x, fsDate=None):
     if "name" in x and "type" in x:
         fn = x["name"]
         feeType = x["type"]
-        fi = {k: v for k, v in x.items() if k not in ["name", "type"]}
-        opt_fields = {
-            "feeStart": fsDate,
-            "feeDueDate": None,
-            "feeDue": 0,
-            "feeArrears": 0,
-            "feeLastPaidDate": None,
-            **fi
-        }
-        return {"feeName": fn, "feeType": mkFeeType(feeType), **opt_fields}
+        fi = {key: value for key, value in x.items() if key not in ["name", "type"]}
+        opt_fields = subMap(fi, [("feeStart", fsDate), ("feeDueDate", None), ("feeDue", 0),
+                                ("feeArrears", 0), ("feeLastPaidDate", None)])
+        return {"feeName": fn, "feeType": mkFeeType(feeType)} | opt_fields
     elif "名称" in x and "类型" in x:
         fn = x["名称"]
         feeType = x["类型"]
-        fi = {k: v for k, v in x.items() if k not in ["名称", "类型"]}
-        opt_fields = {
-            "feeStart": fi.get("起算日", fsDate),
-            "feeDueDate": fi.get("计算日", None),
-            "feeDue": fi.get("应计费用", 0),
-            "feeArrears": fi.get("拖欠", 0),
-            "feeLastPaidDate": fi.get("上次缴付日期", None),
-        }
-        return {"feeName": fn, "feeType": mkFeeType(feeType), **opt_fields}
+        fi = {key: value for key, value in x.items() if key not in ["名称", "类型"]}
+        opt_fields = subMap2(fi, [("起算日", "feeStart", fsDate), ("计算日", "feeDueDate", None), ("应计费用", "feeDue", 0),
+                                  ("拖欠", "feeArrears", 0), ("上次缴付日期", "feeLastPaidDay", None)])
+        return {"feeName": fn, "feeType": mkFeeType(feeType)} | opt_fields
     else:
         raise RuntimeError(f"Failed to match fee: {x}")
 

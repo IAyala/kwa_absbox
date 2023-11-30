@@ -61,23 +61,24 @@ class API:
         ''' build run deal requests: (single run, multi-scenario run, multi-struct run) '''
         r = None
         _nonPerfAssump = mkNonPerfAssumps({}, nonPerfAssump)
-
         if run_type in ["Single", "S"]:
             _deal = deal.json if hasattr(deal, "json") else deal
             _perfAssump = earlyReturnNone(mkAssumpType, perfAssump)
-            r = mkTag(("SingleRunReq", [_deal, _perfAssump, _nonPerfAssump]))
+            #print(_perfAssump)
+            r = mkTag(("SingleRunReq",[_deal, _perfAssump, _nonPerfAssump]))
         elif run_type in ["MultiScenarios", "MS"]:
             _deal = deal.json if hasattr(deal, "json") else deal
             mAssump = mapValsBy(perfAssump, mkAssumpType)
-            r = mkTag(("MultiScenarioRunReq", [_deal, mAssump, _nonPerfAssump]))
+            r = mkTag(("MultiScenarioRunReq",[_deal, mAssump, _nonPerfAssump]))
         elif run_type in ["MultiStructs", "MD"]:
             mDeal = {k: v.json if hasattr(v, "json") else v for k, v in deal.items()}
             _perfAssump = mkAssumpType(perfAssump)
-            r = mkTag(("MultiDealRunReq", [mDeal, _perfAssump, _nonPerfAssump]))
+            r = mkTag(("MultiDealRunReq",[mDeal, _perfAssump, _nonPerfAssump]))
         else:
-            raise RuntimeError(f"Failed to match run type:{run_type}")
+            raise RuntimeError(f"Failed to match run type: {run_type}")
 
         return json.dumps(r, ensure_ascii=False)
+
 
 
     def build_pool_req(self, pool, poolAssump, rateAssumps, read=None) -> str:
@@ -129,7 +130,6 @@ class API:
             result = self._send_req(req, url)
         else:
             result = self._send_req(req, url, timeout=30)
-
         if result is None:
             console.print("❌[bold red]Failed to get response from run")
             return None
@@ -325,7 +325,7 @@ class API:
                 return None
             except ReadTimeout:
                 console.print(f"❌[bold red] Failed to get response from server")
-                return None
+                return None            
             if r.status_code != 200:
                 console.print_json(_req)
                 console.print_json(r.text)
